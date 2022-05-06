@@ -2,11 +2,11 @@ import React, { memo } from "react";
 import { CloseButton } from "../../CloseButton";
 import { FeedbackType, feedbackTypes } from "../WidgetForm";
 
-interface FeedbackTypeStepsProps {
+interface FeedbackTypeStepProps {
   onFeedbackTypeChanged: (type: FeedbackType) => void;
 }
 
-const FeedbackTypeSteps: React.FC<FeedbackTypeStepsProps> = ({
+const FeedbackTypeStep: React.FC<FeedbackTypeStepProps> = ({
   onFeedbackTypeChanged,
 }) => {
   return (
@@ -34,4 +34,4 @@ const FeedbackTypeSteps: React.FC<FeedbackTypeStepsProps> = ({
   );
 };
 
-export const MemoType = memo(FeedbackTypeSteps);
+export const MemoType = memo(FeedbackTypeStep);

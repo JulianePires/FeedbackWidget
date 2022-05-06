@@ -4,13 +4,13 @@ import { ScreenshotButton } from "..";
 import { CloseButton } from "../../CloseButton";
 import { FeedbackType, feedbackTypes } from "../WidgetForm";
 
-interface FeedbackContentStepsProps {
+interface FeedbackContentStepProps {
   feedbackType: FeedbackType;
   onFeedbackRestartRequested: () => void;
   onFeedbackSent: () => void;
 }
 
-const FeedbackContentSteps: React.FC<FeedbackContentStepsProps> = ({
+const FeedbackContentStep: React.FC<FeedbackContentStepProps> = ({
   feedbackType,
   onFeedbackRestartRequested,
   onFeedbackSent
@@ -74,4 +74,4 @@ const FeedbackContentSteps: React.FC<FeedbackContentStepsProps> = ({
   );
 };
 
-export const MemoContent = memo(FeedbackContentSteps);
+export const MemoContent = memo(FeedbackContentStep);
