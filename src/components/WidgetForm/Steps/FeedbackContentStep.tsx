@@ -1,4 +1,4 @@
-import React, { memo } from "react";
+import React, { memo, useState } from "react";
 import { ArrowLeft } from "phosphor-react";
 import { ScreenshotButton } from "..";
 import { CloseButton } from "../../CloseButton";
@@ -13,6 +13,8 @@ const FeedbackContentSteps: React.FC<FeedbackContentStepsProps> = ({
   feedbackType,
   onFeedbackRestartRequested,
 }) => {
+  const [screenshot, setScreenshot] = useState<string | null>(null);
+
   const feedbackTypeInfo = feedbackTypes[feedbackType];
 
   return (
@@ -45,7 +47,7 @@ const FeedbackContentSteps: React.FC<FeedbackContentStepsProps> = ({
         />
 
         <footer className="flex gap-2 mt-2">
-          <ScreenshotButton />
+          <ScreenshotButton onScreenshotTook={setScreenshot} />
           <button
             type="submit"
             className="p-2 bg-brand-500 hover:bg-brand-300 rounded-md border-transparent flex-1 flex justify-center items-center text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-zinc-900 focus:ring-brand-500"
