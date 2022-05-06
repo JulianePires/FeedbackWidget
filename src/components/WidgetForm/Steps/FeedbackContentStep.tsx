@@ -47,7 +47,7 @@ const FeedbackContentSteps: React.FC<FeedbackContentStepsProps> = ({
         />
 
         <footer className="flex gap-2 mt-2">
-          <ScreenshotButton onScreenshotTook={setScreenshot} />
+          <ScreenshotButton screenshot={screenshot} onScreenshotTook={setScreenshot} />
           <button
             type="submit"
             className="p-2 bg-brand-500 hover:bg-brand-300 rounded-md border-transparent flex-1 flex justify-center items-center text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-zinc-900 focus:ring-brand-500"
