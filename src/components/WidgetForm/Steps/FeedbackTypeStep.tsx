@@ -1,5 +1,5 @@
-import React from "react";
-import CloseButton from "../../CloseButton";
+import React, { memo } from "react";
+import { CloseButton } from "../../CloseButton";
 import { FeedbackType, feedbackTypes } from "../WidgetForm";
 
 interface FeedbackTypeStepsProps {
@@ -34,4 +34,4 @@ const FeedbackTypeSteps: React.FC<FeedbackTypeStepsProps> = ({
   );
 };
 
-export default FeedbackTypeSteps;
+export const MemoType = memo(FeedbackTypeSteps);

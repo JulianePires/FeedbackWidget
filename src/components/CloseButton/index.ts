@@ -1,3 +1,3 @@
-import { MemoCloseButton } from "./CloseButton";
+import { MemoCloseButton as CloseButton } from "./CloseButton";
 
-export default MemoCloseButton;
+export { CloseButton };

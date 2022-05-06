@@ -1,3 +1,3 @@
-import { MemoWidget } from "./Widget";
+import { MemoWidget as Widget } from "./Widget";
 
-export default MemoWidget;
+export { Widget };

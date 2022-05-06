@@ -1,9 +1,7 @@
-import React from 'react';
-
-// import { Container } from './styles';
+import React, { memo } from 'react';
 
 const FeedbackSuccessSteps: React.FC = () => {
   return <div />;
 }
 
-export default FeedbackSuccessSteps;
+export const MemoSuccess = memo(FeedbackSuccessSteps);

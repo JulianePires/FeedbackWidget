@@ -1,3 +1,4 @@
-import { MemoWidgetForm } from "./WidgetForm";
+import { MemoScreenshot as ScreenshotButton } from "./ScreenshotButton";
+import { MemoWidgetForm as WidgetForm } from "./WidgetForm";
 
-export default MemoWidgetForm;
+export { WidgetForm, ScreenshotButton };
