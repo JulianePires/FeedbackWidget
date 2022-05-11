@@ -5,6 +5,7 @@ import { useAuth } from "./contexts/AuthContext";
 
 export function App() {
   const { authenticated } = useAuth();
+
   return (
     <>
       {authenticated ? <Dashboard /> : <LandingPage />}

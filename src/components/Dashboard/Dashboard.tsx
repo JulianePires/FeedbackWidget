@@ -1,10 +1,37 @@
 import { SignOut } from "phosphor-react";
-import React, { memo } from "react";
+import React, { memo, useEffect, useState } from "react";
 import { useAuth } from "../../contexts/AuthContext";
+import { api } from "../../lib/api";
 import { Footer } from "../Footer/Footer";
+import { Feedback } from "./Feedback";
+
+type FeedbacksType = {
+  id: string;
+  email: string;
+  comment: string;
+  type: string;
+  screenshot?: string;
+};
+
+interface FeedbackReturn {
+  feedbacks: FeedbacksType[];
+}
 
 const Dashboard: React.FC = () => {
   const { user, handleSignOut } = useAuth();
+
+  const [feedbacks, setFeedbacks] = useState<FeedbacksType[]>([]);
+
+  const handleUpdateFeedbacks = async () => {
+    const response = await api.get<FeedbackReturn>(
+      `/feedbacks?email=${user?.email}`
+    );
+    setFeedbacks(response.data.feedbacks);
+  };
+
+  useEffect(() => {
+    handleUpdateFeedbacks();
+  }, [user?.email]);
 
   return (
     <div className="flex flex-col h-screen">
@@ -18,9 +45,10 @@ const Dashboard: React.FC = () => {
             onClick={handleSignOut}
             className="flex items-center gap-2 bg-brand-500 rounded-md hover:bg-brand-300 p-2 text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-zinc-900 focus:ring-brand-500 disabled:opacity-50 disabled:hover:bg-brand-500"
           >
-            <p>Logout</p>
+            <p className="hidden sm:flex">Logout</p>
             <SignOut weight="bold" />
           </button>
+
           <div className="items-center justify-center hidden rounded-full bg-zinc-200 text-brand-500 text-sm md:flex focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-zinc-900 focus:ring-brand-500 disabled:opacity-50 disabled:hover:bg-brand-500">
             {user?.photoURL ? (
               <img
@@ -35,8 +63,22 @@ const Dashboard: React.FC = () => {
         </span>
       </header>
 
-      <section className="p-4 flex flex-col">
-        <div>Hello World!</div>
+      <section className="p-4 flex flex-wrap gap-4">
+        {feedbacks.length === 0 ? (
+          <div className="bg-brand-500 h-20 rounded-md flex items-center p-2 sm:p-4 text-zinc-900 font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-zinc-900 focus:ring-brand-500 disabled:opacity-50 disabled:hover:bg-brand-500">
+            Sem feedbacks! Que tal nos dar um novo feedback sobre a aplicação?
+            🐛
+          </div>
+        ) : (
+          feedbacks.map((feedback, index) => (
+            <Feedback
+              key={index}
+              type={feedback.type}
+              content={feedback.comment}
+              screenshot={feedback.screenshot}
+            />
+          ))
+        )}
       </section>
 
       <Footer />

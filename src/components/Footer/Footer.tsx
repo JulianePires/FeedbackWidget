@@ -2,7 +2,7 @@ import React from "react";
 
 export const Footer: React.FC = () => {
   return (
-    <footer className="flex items-center justify-center mt-auto h-10 gap-1 dark:bg-zinc-900 text-xs text-neutral-400">
+    <footer className="flex items-center justify-center sm:flex-row flex-col p-2 mt-auto h-20 sm:h-10 gap-1 dark:bg-zinc-900 text-xs text-neutral-400">
       Landing Page desenvolvida por{" "}
       <a
         className="underline underline-offset-2"
